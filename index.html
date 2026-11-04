@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Выпадающий список</title>
+</head>
+<body>
+    <center>
+        <h1>Анкета в программу "Мужское/Женское"</h1>
+        <h3>Выберите, что вам откликается (можно несколько)</h3>
+
+        <form name="myForm">
+            <select name="language" size="4" multiple>
+                <option value="al" selected>Алкоголизм</option>
+                <option value="dr">Драки</option>
+                <option value="det">Много детей</option>
+                <option value="nar">Наркомания</option>
+                <option value="ot">Отсидка в СИЗО</option>
+                <option value="pod">Пиромания</option>
+            </select>
+        </form>
+
+        <div id="selection"></div>
+        <button id="kn1">тут</button>
+    </center>
+
+    <script>const languagesSelect = document.myForm.language;
+        const selection = document.getElementById("selection");
+        const button = document.getElementById("kn1");
+
+        button.addEventListener("click", function () {
+            const selected = Array.from(languagesSelect.selectedOptions);
+
+            if (selected.length === 0) {
+                selection.textContent = "Вы ничего не выбрали";
+            } else {
+                selection.textContent = "Вы выбрали: " +
+                    selected.map(o => o.text).join(", ");
+            }
+            console.log("button was pressed!!!");
+        });</script>
+</body>
+</html>
